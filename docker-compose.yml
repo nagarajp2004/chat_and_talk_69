@@ -23,3 +23,10 @@ services:
     ports:
       - "6379:6379"
     restart: always
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro  

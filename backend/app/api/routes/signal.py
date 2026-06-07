@@ -1,6 +1,6 @@
 import json 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from app.services.room_manager import room_manager
+from backend.app.services.room_manager import room_manager
 
 router=APIRouter()
 

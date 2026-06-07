@@ -1,12 +1,12 @@
 import json 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from app.services.room_manager import room_manager
-
+from backend.app.services.room_manager import room_manager
+from fastapi import WebSocket
 
 router=APIRouter()
 
 @router.websocket("/ws/{room_id}/{user_id}")
-async def chat_endpoint(websocket:websocket,room_id:str,user_id:str):
+async def chat_endpoint(websocket:WebSocket,room_id:str,user_id:str):
     await websocket.accept()
     await room_manager.join_chat(room_id,user_id,websocket)
 
