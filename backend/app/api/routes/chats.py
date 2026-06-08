@@ -10,7 +10,7 @@ async def chat_endpoint(websocket:WebSocket,room_id:str,user_id:str):
     await websocket.accept()
     await room_manager.join_chat(room_id,user_id,websocket)
 
-    members=list(room_manager.get_room_members(room_id))
+    members=list(room_manager.get_Signal_peers(room_id,user_id))
     await websocket.send_text(json.dumps({'type':'room_state','members':members}))
 
     try:
